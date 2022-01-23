@@ -8,7 +8,6 @@ import org.rymarski.motionprocessor.api.dto.MotionUpdateRequest;
 import org.rymarski.motionprocessor.motion.Motion;
 import org.rymarski.motionprocessor.motion.MotionCoreService;
 import org.rymarski.motionprocessor.pageable.PageableSearchResponse;
-import org.rymarski.motionprocessor.security.AuthConstants;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -40,7 +39,7 @@ public class MotionController {
   }
 
   @PostMapping
-  @PreAuthorize(AuthConstants.CAN_ADD_MOTION)
+  @PreAuthorize("hasRole('MANAGER')")
   public long create(@RequestBody MotionCreateRequest motionCreateRequest) {
     log.debug("Received motion create request: {}", motionCreateRequest);
     Long result = motionService.create(motionCreateRequest);
@@ -48,21 +47,21 @@ public class MotionController {
   }
 
   @PatchMapping
-  @PreAuthorize(AuthConstants.CAN_UPDATE_MOTION)
+  @PreAuthorize("hasRole('MANAGER')")
   public void update(@RequestBody MotionUpdateRequest motionUpdateRequest) {
     log.debug("Received motion update request: {}", motionUpdateRequest);
     motionService.update(motionUpdateRequest);
   }
 
   @PatchMapping("/progress")
-  @PreAuthorize(AuthConstants.CAN_PROGRESS_MOTION)
+  @PreAuthorize("hasRole('MANAGER')")
   public void progress(@RequestParam Long id) {
     log.debug("Received motion progress request for id {}", id);
     motionService.progress(id);
   }
 
   @PatchMapping("/deny")
-  @PreAuthorize(AuthConstants.CAN_DENY_MOTION)
+  @PreAuthorize("hasRole('MANAGER')")
   public void deny(@RequestParam Long id) {
     log.debug("Received motion deny request for id {}", id);
     motionService.deny(id);
