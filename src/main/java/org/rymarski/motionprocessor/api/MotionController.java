@@ -26,14 +26,14 @@ import java.util.List;
 public class MotionController {
   private final MotionCoreService motionService;
 
-  @GetMapping
+  @GetMapping("/search")
   public PageableSearchResponse<Motion> searchPage(MotionSearchRequest searchRequest) {
     log.debug("Received search motion request: {}", searchRequest);
     return motionService.searchPage(searchRequest);
   }
 
-  @GetMapping("/id")
-  public List<Motion> search(@RequestParam Long id) {
+  @GetMapping
+  public List<Motion> get(@RequestParam Long id) {
     log.debug("Received search motion request for id: {}", id);
     return motionService.search(id);
   }

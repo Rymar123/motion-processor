@@ -7,7 +7,7 @@ import org.rymarski.motionprocessor.pageable.PageableSearchResponse;
 
 import java.util.List;
 
-interface MotionService {
+public interface MotionService {
   PageableSearchResponse<Motion> searchPage(MotionSearchRequest searchRequest);
 
   List<Motion> search(Long id);

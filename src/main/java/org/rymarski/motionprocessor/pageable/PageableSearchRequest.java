@@ -13,7 +13,7 @@ public class PageableSearchRequest {
   public static final String DEFAULT_SORT_BY_COLUMN = "id";
 
   @Builder.Default
-  private int page = 0;
+  private int page = 1;
   @Builder.Default
   private int size = 10;
   @Builder.Default

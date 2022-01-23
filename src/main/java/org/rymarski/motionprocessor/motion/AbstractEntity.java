@@ -1,6 +1,5 @@
 package org.rymarski.motionprocessor.motion;
 
-
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -13,7 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
-import java.time.OffsetDateTime;
+import java.time.LocalDateTime;
 
 @MappedSuperclass
 @Getter
@@ -28,11 +27,11 @@ abstract class AbstractEntity {
 
   @Column(name = "created_date", nullable = false, updatable = false)
   @CreatedDate
-  private OffsetDateTime createdDate;
+  private LocalDateTime createdDate;
 
   @Column(name = "modified_date")
   @LastModifiedDate
-  private OffsetDateTime modifiedDate;
+  private LocalDateTime modifiedDate;
 
   @Column(name = "created_by")
   @CreatedBy
