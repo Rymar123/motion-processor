@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -42,7 +43,7 @@ public class MotionController {
 
   @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
   @PreAuthorize("hasRole('MANAGER')")
-  public long create(@RequestBody MotionCreateRequest motionCreateRequest) {
+  public long create(@Valid @RequestBody MotionCreateRequest motionCreateRequest) {
     log.debug("Received motion create request: {}", motionCreateRequest);
     Long result = motionService.create(motionCreateRequest);
     return result != null ? result : 0L;
@@ -50,7 +51,7 @@ public class MotionController {
 
   @PatchMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
   @PreAuthorize("hasRole('MANAGER')")
-  public void update(@RequestBody MotionUpdateRequest motionUpdateRequest) {
+  public void update(@Valid @RequestBody MotionUpdateRequest motionUpdateRequest) {
     log.debug("Received motion update request: {}", motionUpdateRequest);
     motionService.update(motionUpdateRequest);
   }
