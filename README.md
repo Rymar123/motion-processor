@@ -1,9 +1,11 @@
 # motion-processor
-Back-end app for motion processor
+Back-end app for motion processor - created using Spring Boot with JPA.
+There is also a very basic role-based security mechanism implemented.
 
-1. api
-2. service
-3. entity, model
-4. tests
+1. REST Endpoint - MotionController
+2. public scope service - MotionCoreService
+3. JPA entity - MotionEntity
+4. DTO model - Motion
+5. Mvc controller test - MotionControllerTest
+6. Service test - MotionServiceTest
 
-#todo add documentation for motion processor
