@@ -29,7 +29,9 @@ class MotionPromoter implements MotionStatusChanger {
       case PUBLISHED:
       case DELETED:
       case REJECTED:
-        throw new UnableToChangeMotionStatusException("Motion with statuses PUBLISHED, DELETED and REJECTED can not be promoted.");
+        String message = "Motion with statuses PUBLISHED, DELETED and REJECTED can not be promoted.";
+        log.error(message);
+        throw new UnableToChangeMotionStatusException(message);
       default:
         throw new IllegalStateException("Unexpected value: " + Motion.Status.valueOf(current));
     }
