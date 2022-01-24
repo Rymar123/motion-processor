@@ -8,15 +8,15 @@ import org.rymarski.motionprocessor.pageable.PageableSearchResponse;
 import java.util.List;
 
 public interface MotionService {
-  PageableSearchResponse<Motion> searchPage(MotionSearchRequest searchRequest);
+    PageableSearchResponse<Motion> searchPage(MotionSearchRequest searchRequest);
 
-  List<Motion> search(Long id);
+    List<Motion> get(Long id);
 
-  Long create(MotionCreateRequest motionCreateRequest);
+    Long create(MotionCreateRequest motionCreateRequest);
 
-  void update(MotionUpdateRequest motionUpdateRequest);
+    void update(MotionUpdateRequest motionUpdateRequest);
 
-  void progress(long id);
+    void progress(long id);
 
-  void deny(long id);
+    void deny(long id);
 }

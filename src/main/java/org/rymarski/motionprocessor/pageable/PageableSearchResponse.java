@@ -13,11 +13,11 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PageableSearchResponse<T> implements Serializable {
-  private static final long serialVersionUID = -6110134077319388358L;
+    private static final long serialVersionUID = -6110134077319388358L;
 
-  private int page;
-  private int size;
-  private int allPagesCount;
-  private long allElementsCount;
-  private List<T> pageContent;
+    private int page;
+    private int size;
+    private int allPagesCount;
+    private long allElementsCount;
+    private List<T> pageContent;
 }

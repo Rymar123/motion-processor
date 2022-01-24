@@ -10,24 +10,24 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-  @Override
-  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    auth.inMemoryAuthentication()
-            .withUser("manager")
-            .password("{noop}manager")
-            .roles("MANAGER")
-            .and()
-            .withUser("user")
-            .password("{noop}user")
-            .roles("USER");
-  }
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+                .withUser("manager")
+                .password("{noop}manager")
+                .roles("MANAGER")
+                .and()
+                .withUser("user")
+                .password("{noop}user")
+                .roles("USER");
+    }
 
-  @Override
-  protected void configure(HttpSecurity http) throws Exception {
-    http
-            .csrf().disable()
-            .authorizeRequests().anyRequest().permitAll();
-  }
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http
+                .csrf().disable()
+                .authorizeRequests().anyRequest().permitAll();
+    }
 }
 
 

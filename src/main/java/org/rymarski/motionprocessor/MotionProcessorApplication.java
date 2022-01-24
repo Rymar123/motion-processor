@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaAuditing
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class MotionProcessorApplication {
-  public static void main(String[] args) {
-    SpringApplication.run(MotionProcessorApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(MotionProcessorApplication.class, args);
+    }
 }

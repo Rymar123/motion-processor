@@ -9,8 +9,8 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @Getter
 public class MotionUpdateRequest {
-  @NotNull(message = "Id is mandatory")
-  private Long id;
-  @NotBlank(message = "Edited content is mandatory")
-  private String editedContent;
+    @NotNull(message = "Id is mandatory")
+    private Long id;
+    @NotBlank(message = "Edited content is mandatory")
+    private String editedContent;
 }

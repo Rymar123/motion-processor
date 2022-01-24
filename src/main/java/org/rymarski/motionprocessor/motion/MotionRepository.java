@@ -12,24 +12,16 @@ import java.util.List;
 
 @Repository
 interface MotionRepository extends JpaRepository<MotionEntity, Long>, JpaSpecificationExecutor<MotionEntity> {
-  // language=SQL
-  String SELECT_MOTIONS_BY_NAME_AND_STATUS_AND_MAX_VERSION = "select * from motions " +
-          "where status =:status " +
-          "and name like '%:name%' " +
-          "group by id " +
-          "having version = MAX(version)";
 
-  // language=SQL
-  String COUNT_MOTION_BY_NAME_AND_STATUS_AND_MAX_VERSION = "select count(*) from motions " +
-          "where status =:status " +
-          "and name like '%:name%' " +
-          "group by id " +
-          "having version = MAX(version)";
+    @Query(value = "select m from MotionEntity m " +
+            "where (:status is null or m.status =:status) " +
+            "and (:name is null or m.name like %:name% )" +
+            "and m.compositeId.version = " +
+            "(SELECT max(m2.compositeId.version) FROM MotionEntity m2 " +
+            "WHERE m.compositeId.id = m2.compositeId.id)")
+    Page<MotionEntity> findAllByNameAndStatus(@Param("name") String name, @Param("status") String status, Pageable pageable);
 
-  @Query(value = SELECT_MOTIONS_BY_NAME_AND_STATUS_AND_MAX_VERSION,
-          countQuery = COUNT_MOTION_BY_NAME_AND_STATUS_AND_MAX_VERSION,
-          nativeQuery = true)
-  Page<MotionEntity> findAllByNameAndStatus(@Param("name") String name, @Param("status") String status, Pageable pageable);
+    List<MotionEntity> findAllByCompositeIdIdOrderByCompositeIdVersionDesc(@Param("compositeIdId") Long id);
 
-  List<MotionEntity> findAllByIdOrderByVersionDesc(Long id);
+    MotionEntity findTop1ByCompositeIdIdOrderByCompositeIdVersionDesc(@Param("compositeIdId") Long id);
 }

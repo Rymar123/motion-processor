@@ -1,5 +1,5 @@
 package org.rymarski.motionprocessor.motion;
 
 interface MotionStatusChanger {
-  void run(MotionEntity motion);
+    void run(MotionEntity motion);
 }

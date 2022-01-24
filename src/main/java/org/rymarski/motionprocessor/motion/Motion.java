@@ -13,25 +13,25 @@ import java.time.OffsetDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Motion implements Serializable {
-  private static final long serialVersionUID = -5748057917225641646L;
+    private static final long serialVersionUID = -5748057917225641646L;
 
-  private long id;
-  private int version;
-  private OffsetDateTime createdDate;
-  private OffsetDateTime modifiedDate;
-  private String createdBy;
-  private String modifiedBy;
-  private String name;
-  private String content;
-  private Status status;
-  private String rejectionReason;
+    private long id;
+    private int version;
+    private OffsetDateTime createdDate;
+    private OffsetDateTime modifiedDate;
+    private String createdBy;
+    private String modifiedBy;
+    private String name;
+    private String content;
+    private Status status;
+    private String rejectionReason;
 
-  enum Status {
-    CREATED,
-    VERIFIED,
-    ACCEPTED,
-    PUBLISHED,
-    DELETED,
-    REJECTED
-  }
+    enum Status {
+        CREATED,
+        VERIFIED,
+        ACCEPTED,
+        PUBLISHED,
+        DELETED,
+        REJECTED
+    }
 }
