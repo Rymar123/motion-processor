@@ -61,7 +61,6 @@ public class MotionCoreService implements MotionService {
 
         if (Motion.Status.CREATED.name().equals(status) || Motion.Status.VERIFIED.name().equals(status)) {
             entity.setContent(motionUpdateRequest.getEditedContent());
-            //entity.incrementVersion();
             repository.save(entity);
         } else {
             throw new UnableToEditMotion(motionUpdateRequest.getId());
@@ -71,14 +70,12 @@ public class MotionCoreService implements MotionService {
     public void progress(long id) {
         MotionEntity entity = repository.findTop1ByCompositeIdIdOrderByCompositeIdVersionDesc(id);
         promoter.run(entity);
-        //entity.incrementVersion();
         repository.save(entity);
     }
 
     public void deny(long id) {
         MotionEntity entity = repository.findTop1ByCompositeIdIdOrderByCompositeIdVersionDesc(id);
         denier.run(entity);
-        //entity.incrementVersion();
         repository.save(entity);
     }
 }

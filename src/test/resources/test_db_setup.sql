@@ -1,3 +1,5 @@
+TRUNCATE TABLE motions;
+
 INSERT INTO motions
     (id, name, content, status, version, created_date)
 VALUES (111, 'motion1', 'content1', 'CREATED', 1, current_date);

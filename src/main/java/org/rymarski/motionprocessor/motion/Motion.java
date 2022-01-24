@@ -26,7 +26,7 @@ public class Motion implements Serializable {
     private Status status;
     private String rejectionReason;
 
-    enum Status {
+    public enum Status {
         CREATED,
         VERIFIED,
         ACCEPTED,

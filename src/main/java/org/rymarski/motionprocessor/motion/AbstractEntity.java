@@ -34,6 +34,15 @@ abstract class AbstractEntity {
     @LastModifiedBy
     private String modifiedBy;
 
+    @PreUpdate
+    private void onUpdate() {
+       incrementVersion();
+    }
+
+    private void incrementVersion() {
+        getCompositeId().setVersion(getVersion() + 1);
+    }
+
     public long getId() {
         return this.compositeId.getId();
     }
@@ -50,8 +59,5 @@ abstract class AbstractEntity {
         this.compositeId.setVersion(version);
     }
 
-    public void incrementVersion() {
-        final int curr = this.getVersion();
-        this.getCompositeId().setVersion(curr + 1);
-    }
+
 }
